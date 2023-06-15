@@ -1,0 +1,11 @@
+/Users/diegopinzon/Work/IdeaProjects/cargo-tracker/src/test/java/net/java/cargotracker/application/BookingServiceTest.java
+/Users/diegopinzon/Work/IdeaProjects/cargo-tracker/src/test/java/net/java/cargotracker/infrastructure/routing/ExternalRoutingServiceTest.java
+/Users/diegopinzon/Work/IdeaProjects/cargo-tracker/src/test/java/net/java/cargotracker/domain/model/handling/HandlingHistoryTest.java
+/Users/diegopinzon/Work/IdeaProjects/cargo-tracker/src/test/java/net/java/cargotracker/domain/model/cargo/ItineraryTest.java
+/Users/diegopinzon/Work/IdeaProjects/cargo-tracker/src/test/java/net/java/cargotracker/domain/model/cargo/RouteSpecificationTest.java
+/Users/diegopinzon/Work/IdeaProjects/cargo-tracker/src/test/java/net/java/cargotracker/domain/model/handling/HandlingEventTest.java
+/Users/diegopinzon/Work/IdeaProjects/cargo-tracker/src/test/java/net/java/cargotracker/application/HandlingEventServiceTest.java
+/Users/diegopinzon/Work/IdeaProjects/cargo-tracker/src/test/java/net/java/cargotracker/domain/model/cargo/CargoTest.java
+/Users/diegopinzon/Work/IdeaProjects/cargo-tracker/src/test/java/net/java/cargotracker/scenario/CargoLifecycleScenarioTest.java
+/Users/diegopinzon/Work/IdeaProjects/cargo-tracker/src/test/java/net/java/cargotracker/application/BookingServiceTestRestConfiguration.java
+/Users/diegopinzon/Work/IdeaProjects/cargo-tracker/src/test/java/net/java/cargotracker/application/BookingServiceTestDataGenerator.java
