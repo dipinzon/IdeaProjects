@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
-import java.util.List;
 
 @Component
 public class EmailValidator implements Predicate<String> {
