@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import java.util.List;
 
 @Component
 public class EmailValidator implements Predicate<String> {
@@ -14,8 +15,9 @@ public class EmailValidator implements Predicate<String> {
                     Pattern.CASE_INSENSITIVE
             ).asPredicate();
 
+
     @Override
     public boolean test(String email) {
-        return IS_EMAIL_VALID.test(email);
+        return IS_EMAIL_VALID.negate().test(email);
     }
 }
