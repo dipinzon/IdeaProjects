@@ -8,5 +8,10 @@ public class superClass {
      {
          this.shape = shape;
      }
+
+     public void move()
+     {
+          System.out.println(shape);
+     }
 }
 
