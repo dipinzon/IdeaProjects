@@ -1,8 +1,6 @@
 import Classes.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.HashMap;
+
+import java.util.*;
 
 public class Main {
 
@@ -73,7 +71,7 @@ public class Main {
         //To declare a HashMap, we need to state the data type of both the key and the value.
         //Note that a HashMap only takes in reference type values
 
-        HashMap<String, Integer> teaSleeping = new HashMap<>();
+        /*HashMap<String, Integer> teaSleeping = new HashMap<>();
         teaSleeping.put("Uno", 1);
         teaSleeping.put("Dos", 2);
         System.out.println(teaSleeping);
@@ -89,9 +87,13 @@ public class Main {
         }
         //Other Methods .containdKey() (true or false), .replace(), .keySet(), .values()
         System.out.println(teaSleeping.keySet());
-        System.out.println(teaSleeping.values());
+        System.out.println(teaSleeping.values());*/
 
-        //2.2 Sets --> A Set stores an unordered collection of unique values. In this article
+        //2.2 Fibonacci with Hashmap BigO = O(n)
+        Map<Integer, Integer> map = new HashMap<Integer,Integer>();
+        System.out.println(fiboNacci.fibMemo(10,map));
+        System.out.println(map);
+        //2.3 Sets --> A Set stores an unordered collection of unique values. In this article
         //////////////////
 
 
