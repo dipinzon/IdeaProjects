@@ -1,5 +1,4 @@
 import Classes.*;
-
 import java.util.*;
 
 public class Main {
@@ -90,14 +89,13 @@ public class Main {
         System.out.println(teaSleeping.values());*/
 
         //2.2 Fibonacci with Hashmap BigO = O(n)
-        Map<Integer, Integer> map = new HashMap<Integer,Integer>();
+        /*Map<Integer, Integer> map = new HashMap<Integer,Integer>();
         System.out.println(fiboNacci.fibMemo(10,map));
-        System.out.println(map);
+        System.out.println(map);*/
+
+
         //2.3 Sets --> A Set stores an unordered collection of unique values. In this article
         //////////////////
-
-
-
 
         //3. FizzBuzz (Mathematical Operators)
         //////////////////
@@ -139,7 +137,34 @@ public class Main {
         superClass object2 = new subClass();
         mainC.getObject(object2);*/
 
+        //5. Immutable class
+        /////////////////
 
+        /*ArrayList listOfStates = new ArrayList();
+        listOfStates.add("Ontario");
+        listOfStates.add("Quebec");
+        listOfStates.add("Alberta");
+
+        inMutableClass country  = new inMutableClass("Canada",listOfStates);
+        System.out.println("Country : " + country.getCountryName());
+        System.out.println("List of States: " + country.getListOfStates());
+
+        // Is not enough to be immutable
+        // It will be added to the list because we did not use clone in getListOfStates
+        //We did not use clone in getListOfStates() method, so we are able to add “British” to the listOfStates.
+        country.getListOfStates().add("British Columbia");
+        //We did not do deep copy for listOfStates , so we are able to add “Nova Scotia” to the list.
+        // It will be added to the list because we did not use deep copy in constructor
+        listOfStates.add("Nova Scotia");
+        System.out.println("Updated list: " + country.getListOfStates());*/
+
+        //6.FindContinuousSequences
+        /////////////////
+        /*Object[] input = {1, 2, 3, 5, 9, "a", 6, 7, 8 ,4, "@", -5, -7, -3, -2, -1};
+        List<List<Integer>> sequences = NumberSequenceFinder.findContinuousSequences(input);
+        for (List<Integer> sequence : sequences) {
+            System.out.println(sequence);
+        }*/
 
     }
 }
