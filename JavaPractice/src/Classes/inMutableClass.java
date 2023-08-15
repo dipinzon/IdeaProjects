@@ -24,7 +24,7 @@ public final class inMutableClass {
    public inMutableClass(String countryName, ArrayList listOfStates)
    { this.countryName = countryName;
      //this.listOfStates = listOfStates; ******
-     //DeepCopu
+     //DeepCopy
      ArrayList tempList = new ArrayList();
      for(int i = 0; i < listOfStates.size();i++)
      {

@@ -9,6 +9,9 @@ public class Main {
     }
     public static void main(String[] args) {
 
+
+        System.out.println(100 + 100 + "Diego");
+        System.out.println("Diego" + 100 +100);
         //General Validation Check
         ///////////////////////////
         //String[] groceries = new String[] {"corn", "chocolate","jelly beans","cookies"};
@@ -26,6 +29,7 @@ public class Main {
         //Crating an Empty Array
         //----------------------
         /*String[] words = new String[5];
+
         words[0] = "Ford";
         words[1] = "Audi";
         words[2] = "Tesla";
@@ -41,6 +45,18 @@ public class Main {
         //tarray.majorOrder(letters); //horizontally through each row starting at the first row and ending with the last
         //System.out.println();
         //tarray.columnOrder(letters); //vertically down each column starting at the first column and ending with the last.
+
+        //1.2 Remove an element of an Array
+        ///////////////////////////////////
+
+        /*int [] originalArray = {1,2,3,4,5};
+        int elementToRemove=4;
+
+        arrayPractice arrayP = new arrayPractice();
+
+        int[] newArray = arrayP.removeElement(originalArray,elementToRemove);
+        System.out.println(Arrays.toString(originalArray));
+        System.out.println(Arrays.toString(newArray));*/
 
         //2.1 ArrayList
         //////////////////

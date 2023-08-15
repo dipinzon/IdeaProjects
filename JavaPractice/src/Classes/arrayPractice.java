@@ -33,4 +33,18 @@ public class arrayPractice {
         }
 
     }
+
+    public int[] removeElement(int[] array, int element)
+    {
+        int[] newArray = new int[array.length-1];
+        int index=0;
+        for (int j : array) {
+            if (j != element) {
+                newArray[index] = j;
+                index++;
+            }
+        }
+        return newArray;
+    }
+
 }
