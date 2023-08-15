@@ -23,63 +23,72 @@ public class TradeProcessor {
         this.restTemplate = restTemplate;
     }
 
-     /**
+    /**
      * Handles incoming FIX messages.
      */
     public void onMessage(Message msg) {
-        // Calling to convertToTradeMessage
-        TradeMessage tradeMessage = convertToTradeMessage(msg);
-        if (tradeMessage != null) {
-            kafkaTemplate.sendDefault(tradeMessage.getTradeId(), tradeMessage); /** Send message to kafka*/
+        try {
+            // Calling to convertToTradeMessage
+            TradeMessage tradeMessage = convertToTradeMessage(msg);
+            if (tradeMessage != null) {
+                kafkaTemplate.sendDefault(tradeMessage.getTradeId(), tradeMessage); /** Send message to kafka*/
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
 
     private TradeMessage convertToTradeMessage(Message msg) {
-        // Create a TradeMessage instance
-        TradeMessage tradeMessage = new TradeMessage();
-        tradeMessage.setTradeId(msg.getString(17));
-        tradeMessage.setSecurityId(msg.getString(48));
-        tradeMessage.setIdSource(TradeMessage.IdSource.valueOf(msg.getString(22)));
-        tradeMessage.setAccount(msg.getString(1));
-        tradeMessage.setQty(msg.getInt(32)); //lastShares
-        tradeMessage.setPrice(msg.getDouble(6));
+        try {
+            // Create a TradeMessage instance
+            TradeMessage tradeMessage = new TradeMessage();
+            tradeMessage.setTradeId(msg.getString(17));
+            tradeMessage.setSecurityId(msg.getString(48));
+            tradeMessage.setIdSource(TradeMessage.IdSource.valueOf(msg.getString(22)));
+            tradeMessage.setAccount(msg.getString(1));
+            tradeMessage.setQty(msg.getInt(32)); //lastShares
+            tradeMessage.setPrice(msg.getDouble(6));
 
-        // Fetch security details from the security master endpoint
-        // Calling exchange method that allows you to send an HTTP request and receive an HTTP response
-        ResponseEntity<SecurityId> response = restTemplate.exchange(
-                "https://sec-master.bns/find",
-                HttpMethod.POST,
-                new HttpEntity<>(new SecurityId(msg.getString(48))),
-                SecurityId.class
-        );
+            // Fetch security details from the security master endpoint
+            // Calling exchange method that allows you to send an HTTP request and receive an HTTP response
+            ResponseEntity<SecurityId> response = restTemplate.exchange(
+                    "https://sec-master.bns/find",
+                    HttpMethod.POST,
+                    new HttpEntity<>(new SecurityId(msg.getString(48))),
+                    SecurityId.class
+            );
 
-        // Get the details from the response entity
-        SecurityId securityDetails = response.getBody();
+            // Get the details from the response entity
+            SecurityId securityDetails = response.getBody();
 
-        // Populate security details into the TradeMessage
-        if (securityDetails != null) {
+            // Populate security details into the TradeMessage
+            if (securityDetails != null) {
 
-            tradeMessage.setTicker(securityDetails.getTicker()); //Side
+                tradeMessage.setTicker(securityDetails.getTicker()); //Side
 
-            /** fields like ISIN, SEDOL, CUSIP, etc. based on idSource*/
-            if (tradeMessage.getIdSource() != null) {
-                switch (tradeMessage.getIdSource()) {
-                    case ISIN:
-                        tradeMessage.setIsin(securityDetails.getIsin());
-                        break;
-                    case SEDOL:
-                        tradeMessage.setSedol(securityDetails.getSedol());
-                        break;
-                    case CUSIP:
-                        tradeMessage.setCusip(securityDetails.getCusip());
-                        break;
-                    case RIC:
-                        tradeMessage.setRic(securityDetails.getRic());
-                        break;
+                /** fields like ISIN, SEDOL, CUSIP, etc. based on idSource*/
+                if (tradeMessage.getIdSource() != null) {
+                    switch (tradeMessage.getIdSource()) {
+                        case ISIN:
+                            tradeMessage.setIsin(securityDetails.getIsin());
+                            break;
+                        case SEDOL:
+                            tradeMessage.setSedol(securityDetails.getSedol());
+                            break;
+                        case CUSIP:
+                            tradeMessage.setCusip(securityDetails.getCusip());
+                            break;
+                        case RIC:
+                            tradeMessage.setRic(securityDetails.getRic());
+                            break;
+                    }
                 }
             }
+            return tradeMessage;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
-        return tradeMessage;
     }
-
 }
