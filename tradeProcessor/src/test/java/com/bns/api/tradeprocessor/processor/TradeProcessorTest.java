@@ -47,7 +47,7 @@ public class TradeProcessorTest {
 
         tradeProcessor.onMessage(validMessage);
 
-        //verify(kafkaTemplate, times(1)).sendDefault(anyString(), any(TradeMessage.class));
+        verify(kafkaTemplate, times(1)).sendDefault(anyString(), any(TradeMessage.class));
     }
 
     @Test

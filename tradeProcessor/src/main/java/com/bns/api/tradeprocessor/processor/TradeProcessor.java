@@ -63,8 +63,7 @@ public class TradeProcessor {
             // Fetch security details from the security master endpoint
             // Calling exchange method that allows you to send an HTTP request and receive an HTTP response
             ResponseEntity<SecurityId> response = restTemplate.exchange(
-                    //"https://sec-master.bns/find",
-                    "https://jsonplaceholder.typicode.com/posts", //Endpoint dummy
+                    "https://sec-master.bns/find", //"https://jsonplaceholder.typicode.com/posts", //Dummy Endpoinct
                     HttpMethod.POST,
                     new HttpEntity<>(new SecurityId(msg.getString(48))),
                     SecurityId.class
