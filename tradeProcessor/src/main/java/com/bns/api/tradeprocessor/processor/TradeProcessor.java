@@ -35,8 +35,8 @@ public class TradeProcessor {
             if (msg.isValid()) {
                 TradeMessage tradeMessage = convertToTradeMessage(msg);
                 if (tradeMessage != null) {
-                    //kafkaTemplate.sendDefault(tradeMessage.getTradeId(), tradeMessage); /** Send message to kafka*/
-                    System.out.println("Message sent to Kafka" + tradeMessage.toString());
+                    kafkaTemplate.sendDefault(tradeMessage.getTradeId(), tradeMessage); /** Send message to kafka*/
+                    System.out.println("Message sent to Kafka" + "Trade Message --> Trade ID: " + tradeMessage.getTradeId() + " SecurityId: " + tradeMessage.getSecurityId());
                 }
             }
             else
@@ -97,6 +97,7 @@ public class TradeProcessor {
                 }
             }
             return tradeMessage;
+
         } catch (Exception e) {
             e.printStackTrace();
             return null;
