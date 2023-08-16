@@ -1,6 +1,6 @@
 package com.bns.api.tradeprocessor.config;
 
-import com.bns.api.tradeprocessor.model.TradeMessage;
+import com.bns.api.tradeprocessor.dto.TradeMessage;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.context.annotation.Bean;

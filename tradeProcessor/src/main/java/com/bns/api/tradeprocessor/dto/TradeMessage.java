@@ -1,4 +1,4 @@
-package com.bns.api.tradeprocessor.model;
+package com.bns.api.tradeprocessor.dto;
 
 public class TradeMessage {
     public enum IdSource { ISIN, CUSIP, SEDOL, RIC }

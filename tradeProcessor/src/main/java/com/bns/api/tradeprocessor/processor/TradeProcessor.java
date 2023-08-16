@@ -1,8 +1,8 @@
 package com.bns.api.tradeprocessor.processor;
 
-import com.bns.api.tradeprocessor.config.SecurityId;
-import com.bns.api.tradeprocessor.model.Message;
-import com.bns.api.tradeprocessor.model.TradeMessage;
+import com.bns.api.tradeprocessor.security.SecurityId;
+import com.bns.api.tradeprocessor.dto.Message;
+import com.bns.api.tradeprocessor.dto.TradeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -10,6 +10,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Logger;
 
 @Component
 public class TradeProcessor {
@@ -28,18 +32,24 @@ public class TradeProcessor {
      */
     public void onMessage(Message msg) {
         try {
-            // Calling to convertToTradeMessage
-            TradeMessage tradeMessage = convertToTradeMessage(msg);
-            if (tradeMessage != null) {
-                kafkaTemplate.sendDefault(tradeMessage.getTradeId(), tradeMessage); /** Send message to kafka*/
+            if (msg.isValid()) {
+                TradeMessage tradeMessage = convertToTradeMessage(msg);
+                if (tradeMessage != null) {
+                    //kafkaTemplate.sendDefault(tradeMessage.getTradeId(), tradeMessage); /** Send message to kafka*/
+                    System.out.println("Message sent to Kafka" + tradeMessage.toString());
+                }
+            }
+            else
+            {
+                System.out.println("Invalid FIX message received");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
     private TradeMessage convertToTradeMessage(Message msg) {
+
         try {
             // Create a TradeMessage instance
             TradeMessage tradeMessage = new TradeMessage();
@@ -53,7 +63,8 @@ public class TradeProcessor {
             // Fetch security details from the security master endpoint
             // Calling exchange method that allows you to send an HTTP request and receive an HTTP response
             ResponseEntity<SecurityId> response = restTemplate.exchange(
-                    "https://sec-master.bns/find",
+                    //"https://sec-master.bns/find",
+                    "https://jsonplaceholder.typicode.com/posts", //Endpoint dummy
                     HttpMethod.POST,
                     new HttpEntity<>(new SecurityId(msg.getString(48))),
                     SecurityId.class

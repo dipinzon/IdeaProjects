@@ -1,4 +1,4 @@
-package com.bns.api.tradeprocessor.config;
+package com.bns.api.tradeprocessor.security;
 
 public class SecurityId {
     String ric;
