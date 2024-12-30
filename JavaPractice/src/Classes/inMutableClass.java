@@ -13,8 +13,7 @@ Don’t create setter method for any instance variables, hence there will be no 
 4. Initialize all variables in constructor :
 You can initialize variables in constructor. You need to take special care while working with mutable object. You need to do deep copy in case of imutable objects.
 5. Perform cloning of mutable objects while returning from getter method:
-If you return clone of object from getter method, it won’t return original object, so your original object will remain intact. I will explain this more in later part of this tutorial.
-*
+If you return clone of object from getter method, it won’t return original object, so your original object will remain intact.
 */
 public final class inMutableClass {
     private final String countryName;

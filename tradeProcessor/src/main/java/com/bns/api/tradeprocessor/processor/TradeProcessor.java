@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -33,7 +34,10 @@ public class TradeProcessor {
     public void onMessage(Message msg) {
         try {
             if (msg.isValid()) {
+                //Message Transformation
                 TradeMessage tradeMessage = convertToTradeMessage(msg);
+
+                //Message to kafka
                 if (tradeMessage != null) {
                     kafkaTemplate.sendDefault(tradeMessage.getTradeId(), tradeMessage); /** Send message to kafka*/
                     System.out.println("Message sent to Kafka" + "Trade Message --> Trade ID: " + tradeMessage.getTradeId() + " SecurityId: " + tradeMessage.getSecurityId());
@@ -63,7 +67,8 @@ public class TradeProcessor {
             // Fetch security details from the security master endpoint
             // Calling exchange method that allows you to send an HTTP request and receive an HTTP response
             ResponseEntity<SecurityId> response = restTemplate.exchange(
-                    "https://sec-master.bns/find", //"https://jsonplaceholder.typicode.com/posts", //Dummy Endpoinct
+                    //"https://sec-master.bns/find",
+                    "https://jsonplaceholder.typicode.com/posts", //DummyEndpoint
                     HttpMethod.POST,
                     new HttpEntity<>(new SecurityId(msg.getString(48))),
                     SecurityId.class
