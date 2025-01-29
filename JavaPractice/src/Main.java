@@ -370,6 +370,45 @@ public class Main {
 
 
         /// ///LINKEDLIST
+        /////////Print the Elements of a Linked List
+
+        /*static void printLinkedList(SinglyLinkedListNode head) {
+            SinglyLinkedListNode current = head;
+            while(current != null)
+            {
+                System.out.println(current.data);
+                current = current.next;
+            }*/
+
+        //////Insert a node at the head of a linked list
+
+        /*static SinglyLinkedListNode insertNodeAtHead(SinglyLinkedListNode llist, int data) {
+            SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
+            newNode.next = llist;
+            return newNode;
+        }*/
+
+        /// /////Insert a Node at the Tail of a Linked List
+        /*static SinglyLinkedListNode insertNodeAtTail(SinglyLinkedListNode head, int data) {
+            //// Create a new node with the given data
+            SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
+
+            // If the list is empty, the new node becomes the head
+            if (head == null) {
+                return newNode;
+            }
+
+            // Traverse the list to find the tail node
+
+            SinglyLinkedListNode current = head;
+
+            while (current.next != null)
+            { current = current.next;
+            }
+            current.next = newNode;
+            return head;
+        }^/
+
 
 
     }
