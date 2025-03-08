@@ -1,11 +1,6 @@
-import Classes.*;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.*;
 
-public class Main {
+public class MainPractice {
 
     /*public void getObject(superClass Object2)
     {
@@ -24,8 +19,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
 
-        /*System.out.println(100 + 100 + "Diego");
-        System.out.println("Diego" + 100 + 100);*/
+        System.out.println(100 + 100 + "Diego");
+        System.out.println("Diego" + 100 + 100);
 
         //General Validation Check
         ///////////////////////////
@@ -165,7 +160,7 @@ public class Main {
         superClass[] data = {object1};
 
         //Sending an Object as a Parameter
-        Main mainC = new Main();
+        MainPractice mainC = new MainPractice();
         superClass object2 = new subClass();
         mainC.getObject(object2);*/
 
@@ -407,7 +402,7 @@ public class Main {
             }
             current.next = newNode;
             return head;
-        }^/
+        }*/
 
 
 

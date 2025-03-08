@@ -1,4 +1,4 @@
-package Classes;
+package Classes.practice;
 
 public class genericsEx {
 }

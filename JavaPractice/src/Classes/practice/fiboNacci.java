@@ -1,6 +1,5 @@
-package Classes;
+package Classes.practice;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class fiboNacci {
